@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 import { CelebrationBurst } from '../components/feedback/CelebrationBurst';
-import { AnswerOption } from '../components/game/AnswerOption';
-import { PatternPreview } from '../components/game/PatternPreview';
+import { PopInstruction } from '../components/game/PopInstruction';
+import { PopItemButton } from '../components/game/PopItemButton';
 import { RewardPanel } from '../components/game/RewardPanel';
 import { GardenIsland } from '../components/world/GardenIsland';
 import { useGardenGame } from '../features/gameplay/useGardenGame';
 import { useProgress } from '../app/providers/ProgressProvider';
 
 export function GamePage() {
-  const { level, feedback, selectedOptionId, roundCorrectAnswers, isLevelComplete, chooseOption, nextTurn } =
+  const { level, round, roundIndex, feedback, poppedIds, wrongItemId, poppedTargetCount, targetIds, isRoundComplete, isLevelComplete, tapItem } =
     useGardenGame();
   const { progress } = useProgress();
 
@@ -19,46 +19,46 @@ export function GamePage() {
           <div className="game-card">
             <div className="game-card__header">
               <div>
-                <p className="eyebrow">Garden Trails</p>
+                <p className="eyebrow">Flagship game</p>
                 <h1>{level.title}</h1>
               </div>
-              <span className="garden-growth-badge">Level blooms {roundCorrectAnswers}/3</span>
+              <span className="garden-growth-badge">
+                Found {poppedTargetCount}/{targetIds.length}
+              </span>
             </div>
             <p className="game-card__prompt">{level.prompt}</p>
-            <PatternPreview sequence={level.sequence} title={level.patternRule} />
-            <div className="answer-grid">
-              {level.options.map((option) => (
-                <AnswerOption
-                  key={option.id}
-                  option={option}
-                  isSelected={selectedOptionId === option.id}
-                  isCorrect={option.id === level.correctOptionId}
-                  feedback={feedback}
-                  onSelect={chooseOption}
+            <PopInstruction
+              instruction={round.rule.instruction}
+              roundIndex={roundIndex}
+              totalRounds={level.rounds.length}
+            />
+            <div className="pop-grid" aria-label="Tap the matching items">
+              {round.items.map((item) => (
+                <PopItemButton
+                  key={item.id}
+                  item={item}
+                  popped={poppedIds.includes(item.id)}
+                  wrong={wrongItemId === item.id}
+                  onTap={tapItem}
                 />
               ))}
             </div>
             <div className="game-footer">
               <div>
                 {feedback === 'correct' ? (
-                  <p className="feedback-copy feedback-copy--success">Beautiful match. The trail is glowing.</p>
+                  <p className="feedback-copy feedback-copy--success">Nice pop. The garden is growing.</p>
                 ) : null}
                 {feedback === 'incorrect' ? (
-                  <p className="feedback-copy feedback-copy--retry">Not quite. Look for what changes each step.</p>
+                  <p className="feedback-copy feedback-copy--retry">Try again. Only tap the matching ones.</p>
+                ) : null}
+                {isRoundComplete && !isLevelComplete ? (
+                  <p className="feedback-copy feedback-copy--success">Round complete. Next one is ready.</p>
                 ) : null}
                 {isLevelComplete ? (
-                  <p className="feedback-copy feedback-copy--success">Level complete. The next habitat path is open.</p>
+                  <p className="feedback-copy feedback-copy--success">Level complete. The habitat just bloomed brighter.</p>
                 ) : null}
               </div>
               <div className="game-actions">
-                <button
-                  className="button button--primary"
-                  type="button"
-                  onClick={nextTurn}
-                  disabled={feedback === 'idle'}
-                >
-                  {isLevelComplete ? 'Collect reward' : feedback === 'correct' ? 'Grow the garden' : 'Try again'}
-                </button>
                 <Link className="button button--ghost" to="/dashboard">
                   Back to dashboard
                 </Link>
@@ -70,11 +70,11 @@ export function GamePage() {
           <GardenIsland growth={progress.gardenGrowth} habitat={progress.currentHabitat} highlight={progress.lastReward} />
           <RewardPanel
             seeds={progress.seedsEarned}
-            streak={roundCorrectAnswers}
-            feedback={feedback}
+            streak={poppedTargetCount}
+            feedback={feedback === 'celebrating' ? 'correct' : feedback === 'incorrect' ? 'incorrect' : 'idle'}
             rewardMessage={progress.lastReward}
           />
-          <CelebrationBurst active={feedback === 'correct'} label="+2 seeds" />
+          <CelebrationBurst active={feedback === 'correct' || feedback === 'celebrating'} label="+2 seeds" />
         </div>
       </section>
     </main>

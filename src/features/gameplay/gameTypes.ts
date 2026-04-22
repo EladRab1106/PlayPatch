@@ -1,16 +1,24 @@
-export type PatternShape = 'flower' | 'leaf' | 'diamond' | 'orb';
-export type PatternColor = 'coral' | 'sky' | 'mint' | 'gold' | 'lavender';
-export type PatternPosition = 'left' | 'center' | 'right';
+export type PopColor = 'coral' | 'sky' | 'mint' | 'gold' | 'lavender';
+export type PopShape = 'flower' | 'star' | 'leaf' | 'sun';
+export type RuleType = 'color' | 'shape';
 
-export type PatternToken = {
-  shape: PatternShape;
-  color: PatternColor;
-  count: number;
-  position: PatternPosition;
+export type PopItem = {
+  id: string;
+  color: PopColor;
+  shape: PopShape;
 };
 
-export type PatternOption = PatternToken & {
+export type PopRule = {
+  type: RuleType;
+  targetColor?: PopColor;
+  targetShape?: PopShape;
+  instruction: string;
+};
+
+export type PopRound = {
   id: string;
+  items: PopItem[];
+  rule: PopRule;
 };
 
 export type GameLevel = {
@@ -19,7 +27,5 @@ export type GameLevel = {
   habitat: string;
   prompt: string;
   patternRule: string;
-  sequence: Array<PatternToken | null>;
-  options: PatternOption[];
-  correctOptionId: string;
+  rounds: PopRound[];
 };

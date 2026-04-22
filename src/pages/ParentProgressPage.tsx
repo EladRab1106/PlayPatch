@@ -13,8 +13,8 @@ export function ParentProgressPage() {
           <p className="eyebrow">Parent progress view</p>
           <h1>Structured, visible learning progress.</h1>
           <p>
-            PlayPatch currently teaches early pattern recognition through short guided levels. Each
-            completed trail advances the child&apos;s garden and marks clear skill progress.
+            PlayPatch currently teaches early visual sorting and attention through short guided tap
+            rounds. Each completed activity advances the child&apos;s garden and marks clear skill progress.
           </p>
         </div>
         <button className="button button--ghost" type="button" onClick={resetProgress}>
@@ -43,7 +43,7 @@ export function ParentProgressPage() {
         </article>
         <article className="parent-card">
           <p className="eyebrow">What the child sees</p>
-          <p>Immediate blooms, seeds, unlocked paths, and gentle creature reveals tied to correct pattern choices.</p>
+          <p>Immediate pops, seeds, blooms, and gentle creature reveals tied to correct taps.</p>
         </article>
         <article className="parent-card">
           <p className="eyebrow">What parents can verify</p>

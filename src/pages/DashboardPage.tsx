@@ -19,12 +19,13 @@ export function DashboardPage() {
             <h1>{level.title}</h1>
             <p>{level.prompt}</p>
             <ul className="activity-meta">
-              <li>Skill: {level.patternRule}</li>
+              <li>Game: Pop the Right Thing</li>
+              <li>Skill: fast visual matching and focused attention</li>
               <li>Habitat: {level.habitat}</li>
               <li>Reward: 2 seeds per correct answer</li>
             </ul>
             <Link className="button button--primary" to="/game">
-              Start Garden Trails
+              Start popping
             </Link>
           </section>
           <ProgressCard

@@ -84,7 +84,7 @@ export function ProgressProvider({ children }: PropsWithChildren) {
         seedsEarned: current.seedsEarned + 8,
         unlockedGardenItems,
         unlockedCreatures,
-        lastReward: `${gameLevels[current.currentLevel].title} restored the island path.`,
+        lastReward: `${gameLevels[current.currentLevel].title} helped the island bloom.`,
       };
     });
   };
