@@ -491,93 +491,272 @@ p {
 
 .garden-island-scene {
   margin: 20px 0 16px;
-  min-height: 300px;
-  display: grid;
-  place-items: center;
+  min-height: 340px;
   border-radius: 28px;
-  background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.9), transparent 30%),
-    linear-gradient(180deg, #bfe7ff 0%, #ecfbff 44%, #e5f5e7 100%);
-}
-
-.garden-island-base {
-  position: relative;
-  width: min(360px, 88%);
-  aspect-ratio: 1;
-  border-radius: 46% 54% 46% 54%;
-  background: radial-gradient(circle at 50% 16%, #eaffc7 0%, #b8e89c 24%, #76c18e 78%, #599a73 100%);
   overflow: hidden;
 }
 
-.garden-scene__path,
-.garden-scene__pond,
-.garden-scene__bloom,
-.garden-scene__creature {
+.living-scene {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(233, 247, 255, 0.56));
+}
+
+.living-scene__sky,
+.living-scene__clouds,
+.living-scene__back,
+.living-scene__island,
+.living-scene__front,
+.living-scene__particles {
+  position: absolute;
+  inset: 0;
+}
+
+.living-scene__sky {
+  background:
+    radial-gradient(circle at 20% 18%, rgba(255, 250, 200, 0.92) 0%, transparent 24%),
+    radial-gradient(circle at 74% 26%, rgba(248, 222, 255, 0.7) 0%, transparent 24%),
+    linear-gradient(180deg, #a8dbff 0%, #dbf4ff 38%, #eef9f1 100%);
+  background-size: 140% 140%;
+}
+
+.living-scene__clouds,
+.living-scene__back,
+.living-scene__particles {
+  pointer-events: none;
+}
+
+.sky-cloud {
+  position: absolute;
+  width: 96px;
+  height: 30px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.76);
+  filter: blur(0.3px);
+  box-shadow:
+    22px 4px 0 6px rgba(255, 255, 255, 0.72),
+    -18px 2px 0 4px rgba(255, 255, 255, 0.68);
+}
+
+.sky-cloud--2 {
+  width: 116px;
+}
+
+.sky-cloud--3 {
+  width: 82px;
+}
+
+.island-hill,
+.back-tree {
   position: absolute;
   display: block;
 }
 
-.garden-scene__path {
-  width: 160px;
+.island-hill {
+  bottom: 84px;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(180deg, rgba(127, 191, 140, 0.9), rgba(83, 146, 104, 0.96));
+  filter: blur(0.3px);
+}
+
+.island-hill--left {
+  left: -4%;
+  width: 42%;
+  height: 94px;
+}
+
+.island-hill--center {
+  left: 24%;
+  width: 38%;
+  height: 118px;
+}
+
+.island-hill--right {
+  right: -2%;
+  width: 36%;
+  height: 92px;
+}
+
+.back-tree {
+  bottom: 104px;
+  width: 18px;
+  height: 56px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(84, 126, 93, 0.9), rgba(54, 88, 67, 0.96));
+}
+
+.back-tree::before {
+  content: '';
+  position: absolute;
+  inset: -16px -14px auto;
   height: 34px;
-  left: 84px;
-  top: 164px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #ffd9a5, #fff1cf);
-  transform: rotate(-18deg);
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(129, 194, 118, 0.96), rgba(90, 149, 90, 0.96));
 }
 
-.garden-scene__pond {
-  width: 110px;
-  height: 62px;
-  left: 36px;
-  bottom: 38px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #9fe0ff, #52aee2);
+.back-tree--one {
+  left: 18%;
 }
 
-.garden-scene__bloom {
-  width: 26px;
-  height: 26px;
+.back-tree--two {
+  left: 70%;
+}
+
+.back-tree--three {
+  left: 56%;
+  height: 48px;
+}
+
+.living-scene__island {
+  display: grid;
+  place-items: center;
+}
+
+.island-shadow {
+  position: absolute;
+  width: min(330px, 76%);
+  height: 54px;
+  bottom: 34px;
   border-radius: 50%;
-  background: radial-gradient(circle, #fff 0%, #ffb39b 38%, #ff8268 100%);
+  background: radial-gradient(circle, rgba(45, 93, 73, 0.28) 0%, rgba(45, 93, 73, 0.02) 72%);
+  filter: blur(10px);
+}
+
+.island-core {
+  position: relative;
+  width: min(344px, 78%);
+  aspect-ratio: 1;
+  border-radius: 44% 56% 48% 52%;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(239, 255, 197, 0.98) 0%, rgba(181, 231, 134, 0.96) 24%, rgba(101, 180, 113, 0.98) 76%, rgba(69, 133, 87, 1) 100%);
   box-shadow:
-    14px 0 0 rgba(255, 130, 104, 0.84),
-    -14px 0 0 rgba(255, 130, 104, 0.84),
-    0 14px 0 rgba(255, 130, 104, 0.84),
-    0 -14px 0 rgba(255, 130, 104, 0.84);
-  animation: bloomFloat 3.2s ease-in-out infinite;
+    inset 0 22px 30px rgba(255, 255, 255, 0.26),
+    inset 0 -20px 22px rgba(46, 90, 57, 0.24),
+    0 28px 40px rgba(42, 86, 76, 0.14);
+  overflow: hidden;
 }
 
-.bloom-1 { left: 34%; top: 24%; }
-.bloom-2 { right: 18%; top: 34%; }
-.bloom-3 { left: 48%; bottom: 20%; }
-.bloom-4 { left: 22%; top: 52%; }
-.bloom-5 { right: 34%; bottom: 18%; }
-.bloom-6 { left: 18%; top: 18%; }
-.bloom-7 { right: 12%; top: 58%; }
-.bloom-8 { left: 56%; top: 14%; }
-.bloom-9 { left: 62%; bottom: 24%; }
-.bloom-10 { left: 10%; bottom: 26%; }
-.bloom-11 { right: 28%; top: 16%; }
-.bloom-12 { left: 38%; top: 46%; }
+.island-core__ridge,
+.island-core__path,
+.island-core__pond {
+  position: absolute;
+  display: block;
+}
 
-.garden-scene__creature {
-  width: 46px;
-  height: 30px;
+.island-core__ridge {
+  inset: 12% 16% auto;
+  height: 38%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 72%);
+}
+
+.island-core__path {
+  width: 166px;
+  height: 34px;
+  left: 88px;
+  top: 176px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #fff7d8, #e2c369);
+  background: linear-gradient(90deg, #ffe1b3, #fff6d9);
+  transform: rotate(-16deg);
+  box-shadow: inset 0 3px 4px rgba(255, 255, 255, 0.44);
 }
 
-.garden-scene__creature--one {
-  right: 28%;
-  bottom: 18%;
+.island-core__pond {
+  width: 110px;
+  height: 68px;
+  left: 40px;
+  bottom: 38px;
+  border-radius: 54% 46% 52% 48%;
+  background:
+    radial-gradient(circle at 36% 26%, rgba(255,255,255,0.9) 0%, transparent 18%),
+    linear-gradient(180deg, #9fe6ff, #4daee2);
+  box-shadow:
+    inset 0 8px 10px rgba(255, 255, 255, 0.34),
+    0 0 18px rgba(132, 211, 255, 0.34);
 }
 
-.garden-scene__creature--two {
-  left: 30%;
-  top: 18%;
-  background: linear-gradient(135deg, #edf0ff, #b79cff);
+.living-scene__front {
+  z-index: 3;
+}
+
+.front-plant,
+.front-bloom,
+.front-creature {
+  position: absolute;
+  display: block;
+}
+
+.front-plant {
+  width: 20px;
+  height: 72px;
+  border-radius: 100% 0;
+  transform-origin: bottom center;
+  background: linear-gradient(180deg, rgba(168, 239, 169, 0.96), rgba(62, 146, 90, 0.98));
+}
+
+.front-plant--small {
+  height: 56px;
+}
+
+.front-plant--medium {
+  width: 26px;
+  height: 84px;
+}
+
+.front-bloom {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff9f0 0%, #ffb59d 40%, #ff8268 100%);
+  box-shadow:
+    14px 0 0 rgba(255, 130, 104, 0.88),
+    -14px 0 0 rgba(255, 130, 104, 0.88),
+    0 14px 0 rgba(255, 130, 104, 0.88),
+    0 -14px 0 rgba(255, 130, 104, 0.88);
+}
+
+.front-creature {
+  width: 52px;
+  height: 34px;
+  border-radius: 999px;
+  box-shadow: 0 12px 20px rgba(36, 65, 51, 0.12);
+}
+
+.front-creature--one {
+  right: 27%;
+  bottom: 17%;
+  background: linear-gradient(135deg, #fff8d9, #e4c66f);
+}
+
+.front-creature--two {
+  left: 24%;
+  top: 24%;
+  background: linear-gradient(135deg, #eef1ff, #b79cff);
+}
+
+.living-scene__particles {
+  z-index: 4;
+}
+
+.island-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.66);
+}
+
+.island-particle--2 {
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 232, 156, 0.9);
+}
+
+.island-particle--3 {
+  width: 5px;
+  height: 5px;
+  background: rgba(184, 228, 255, 0.92);
 }
 
 .garden-island-card__highlight,
