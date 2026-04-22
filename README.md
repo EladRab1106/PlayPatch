@@ -1,12 +1,13 @@
 # PlayPatch
 
-PlayPatch is a premium kids learning app concept focused on pattern fluency, progression, and visible world-building rewards. This repository contains the React + TypeScript MVP foundation for the product.
+PlayPatch is a premium kids learning app concept focused on pattern fluency, progression, and visible world-building rewards. This repository contains a working React + TypeScript MVP with a parent-facing landing page, a child dashboard, the `Garden Trails` flagship game, and a simple local progress model.
 
 ## Stack
 
 - React
 - TypeScript
 - Vite
+- React Router
 
 ## Getting Started
 
@@ -30,24 +31,40 @@ npm run build
 
 ## Architecture
 
-The codebase is organized around product surfaces instead of a single flat `src` directory:
+The codebase is organized around product surfaces instead of a single flat `src` directory.
 
+- `src/app`
+  Routing and top-level providers.
 - `src/components`
-  Shared UI building blocks and layout primitives.
+  Reusable UI grouped by product area such as landing, game, world, layout, and feedback.
+- `src/data`
+  MVP mock levels and seed progress state.
+- `src/features`
+  Typed gameplay and progress logic.
 - `src/pages`
-  Route-level screens and high-level experiences.
+  Route-level screens: landing, dashboard, game, and parent progress.
 - `src/styles`
-  Global design tokens and foundational styling.
+  Shared visual system and page styling.
 
-As the MVP expands, the next layers will be:
+## Routes
 
-- `src/features/gameplay`
-  Flagship pattern game logic, feedback loops, and difficulty tuning.
-- `src/features/progression`
-  Garden growth, unlockables, and session rewards.
-- `src/features/parent`
-  Parent-facing summaries and learning progress views.
+- `/`
+  Parent-facing landing page
+- `/dashboard`
+  Child dashboard with current habitat, rewards, and available activity
+- `/game`
+  `Garden Trails` pattern game
+- `/progress`
+  Parent progress summary
+
+## MVP Product Scope
+
+- One premium landing page for parents
+- One polished child dashboard
+- One flagship game built around visual pattern completion
+- One visible reward loop based on seeds, blooms, and unlocks
+- One frontend-only progress model with no backend dependency
 
 ## Product Intent
 
-The MVP is being designed around a simple principle: every solved pattern should help the child grow a world they care about, while every session should produce progress parents can understand at a glance.
+Every solved pattern should help the child grow a world they care about, while every session should produce progress parents can understand at a glance.
