@@ -1,10 +1,13 @@
-import { AppShell } from './components/layout/AppShell';
-import { DashboardPage } from './pages/DashboardPage';
+import { BrowserRouter } from 'react-router-dom';
+import { AppRoutes } from './app/routes';
+import { ProgressProvider } from './app/providers/ProgressProvider';
 
 export function App() {
   return (
-    <AppShell>
-      <DashboardPage />
-    </AppShell>
+    <BrowserRouter>
+      <ProgressProvider>
+        <AppRoutes />
+      </ProgressProvider>
+    </BrowserRouter>
   );
 }

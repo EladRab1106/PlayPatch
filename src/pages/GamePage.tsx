@@ -1,3 +1,3 @@
-export function DashboardPage() {
+export function GamePage() {
   return <main className="page-shell" />;
 }
