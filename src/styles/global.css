@@ -408,6 +408,502 @@ p {
   padding: 30px 32px;
 }
 
+.dashboard-page,
+.game-page,
+.parent-page {
+  display: grid;
+  gap: 20px;
+}
+
+.dashboard-grid,
+.game-layout,
+.dashboard-lower,
+.parent-metrics,
+.parent-detail-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.dashboard-grid,
+.game-layout {
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+}
+
+.dashboard-lower,
+.parent-metrics,
+.parent-detail-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.dashboard-stack,
+.game-side {
+  display: grid;
+  gap: 20px;
+}
+
+.garden-island-card,
+.activity-card,
+.stat-card,
+.unlock-gallery,
+.game-card,
+.reward-panel,
+.parent-summary,
+.metric-card,
+.parent-card {
+  background: var(--surface);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  box-shadow: var(--shadow);
+}
+
+.garden-island-card,
+.activity-card,
+.stat-card,
+.unlock-gallery,
+.game-card,
+.reward-panel,
+.parent-summary,
+.metric-card,
+.parent-card {
+  border-radius: 32px;
+  padding: 26px;
+}
+
+.garden-island-card__header,
+.game-card__header,
+.parent-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.garden-growth-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(127, 216, 180, 0.18);
+  color: var(--mint-deep);
+  font-weight: 700;
+}
+
+.garden-island-scene {
+  margin: 20px 0 16px;
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.9), transparent 30%),
+    linear-gradient(180deg, #bfe7ff 0%, #ecfbff 44%, #e5f5e7 100%);
+}
+
+.garden-island-base {
+  position: relative;
+  width: min(360px, 88%);
+  aspect-ratio: 1;
+  border-radius: 46% 54% 46% 54%;
+  background: radial-gradient(circle at 50% 16%, #eaffc7 0%, #b8e89c 24%, #76c18e 78%, #599a73 100%);
+  overflow: hidden;
+}
+
+.garden-scene__path,
+.garden-scene__pond,
+.garden-scene__bloom,
+.garden-scene__creature {
+  position: absolute;
+  display: block;
+}
+
+.garden-scene__path {
+  width: 160px;
+  height: 34px;
+  left: 84px;
+  top: 164px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffd9a5, #fff1cf);
+  transform: rotate(-18deg);
+}
+
+.garden-scene__pond {
+  width: 110px;
+  height: 62px;
+  left: 36px;
+  bottom: 38px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #9fe0ff, #52aee2);
+}
+
+.garden-scene__bloom {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, #ffb39b 38%, #ff8268 100%);
+  box-shadow:
+    14px 0 0 rgba(255, 130, 104, 0.84),
+    -14px 0 0 rgba(255, 130, 104, 0.84),
+    0 14px 0 rgba(255, 130, 104, 0.84),
+    0 -14px 0 rgba(255, 130, 104, 0.84);
+  animation: bloomFloat 3.2s ease-in-out infinite;
+}
+
+.bloom-1 { left: 34%; top: 24%; }
+.bloom-2 { right: 18%; top: 34%; }
+.bloom-3 { left: 48%; bottom: 20%; }
+.bloom-4 { left: 22%; top: 52%; }
+.bloom-5 { right: 34%; bottom: 18%; }
+.bloom-6 { left: 18%; top: 18%; }
+.bloom-7 { right: 12%; top: 58%; }
+.bloom-8 { left: 56%; top: 14%; }
+.bloom-9 { left: 62%; bottom: 24%; }
+.bloom-10 { left: 10%; bottom: 26%; }
+.bloom-11 { right: 28%; top: 16%; }
+.bloom-12 { left: 38%; top: 46%; }
+
+.garden-scene__creature {
+  width: 46px;
+  height: 30px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #fff7d8, #e2c369);
+}
+
+.garden-scene__creature--one {
+  right: 28%;
+  bottom: 18%;
+}
+
+.garden-scene__creature--two {
+  left: 30%;
+  top: 18%;
+  background: linear-gradient(135deg, #edf0ff, #b79cff);
+}
+
+.garden-island-card__highlight,
+.game-card__prompt,
+.activity-card p,
+.unlock-chip strong,
+.reward-message,
+.parent-card p,
+.parent-summary p {
+  color: #53707f;
+}
+
+.activity-card h1,
+.game-card h1,
+.parent-summary h1 {
+  margin-bottom: 10px;
+}
+
+.activity-meta,
+.parent-list {
+  padding-left: 18px;
+  color: #53707f;
+}
+
+.activity-meta {
+  margin: 18px 0 22px;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stat-grid div,
+.metric-card {
+  padding: 18px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(20, 48, 66, 0.08);
+}
+
+.stat-grid strong,
+.stat-grid span,
+.metric-card strong,
+.metric-card span {
+  display: block;
+}
+
+.stat-grid strong,
+.metric-card strong {
+  font-size: 1.4rem;
+}
+
+.unlock-gallery__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.unlock-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(20, 48, 66, 0.08);
+}
+
+.unlock-chip__spark {
+  color: var(--gold);
+}
+
+.pattern-preview {
+  display: grid;
+  gap: 12px;
+}
+
+.pattern-track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.pattern-slot {
+  min-height: 116px;
+  display: grid;
+  place-items: center;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(20, 48, 66, 0.08);
+}
+
+.pattern-slot--missing {
+  font-size: 2rem;
+  color: #6f8a98;
+  border-style: dashed;
+}
+
+.pattern-token {
+  width: 100%;
+  min-height: 74px;
+  display: flex;
+  gap: 10px;
+}
+
+.pattern-token--left {
+  justify-content: flex-start;
+}
+
+.pattern-token--center {
+  justify-content: center;
+}
+
+.pattern-token--right {
+  justify-content: flex-end;
+}
+
+.pattern-piece {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+
+.pattern-piece--flower {
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, var(--coral) 42%, #ff765f 100%);
+}
+
+.pattern-piece--leaf {
+  border-radius: 100% 0;
+  transform: rotate(-45deg);
+  background: linear-gradient(135deg, #d8ffdd, #58b677);
+}
+
+.pattern-piece--diamond {
+  transform: rotate(45deg);
+  background: linear-gradient(135deg, #ffeab6, #f3c969);
+}
+
+.pattern-piece--orb {
+  border-radius: 50%;
+  background: linear-gradient(135deg, #dff0ff, #7ac4ff);
+}
+
+.pattern-piece--coral { background: linear-gradient(135deg, #ffd9cf, #ff8b7b); }
+.pattern-piece--sky { background: linear-gradient(135deg, #dff1ff, #86c5ff); }
+.pattern-piece--mint { background: linear-gradient(135deg, #e1fff0, #7fd8b4); }
+.pattern-piece--gold { background: linear-gradient(135deg, #fff0bf, #f3c969); }
+.pattern-piece--lavender { background: linear-gradient(135deg, #ece3ff, #b79cff); }
+
+.answer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.answer-option {
+  min-height: 148px;
+  padding: 18px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid transparent;
+  box-shadow: 0 16px 30px rgba(27, 53, 75, 0.08);
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.answer-option:hover {
+  transform: translateY(-2px);
+}
+
+.answer-option--selected {
+  border-color: rgba(134, 197, 255, 0.9);
+}
+
+.answer-option--correct {
+  border-color: rgba(31, 143, 117, 0.8);
+  background: rgba(127, 216, 180, 0.18);
+}
+
+.answer-option--incorrect {
+  border-color: rgba(255, 139, 123, 0.82);
+  background: rgba(255, 139, 123, 0.12);
+}
+
+.game-card__prompt {
+  font-size: 1.08rem;
+}
+
+.game-footer,
+.game-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.game-footer {
+  margin-top: 22px;
+}
+
+.feedback-copy {
+  margin: 0;
+  font-weight: 700;
+}
+
+.feedback-copy--success {
+  color: var(--mint-deep);
+}
+
+.feedback-copy--retry {
+  color: #d66c59;
+}
+
+.reward-panel {
+  display: grid;
+  gap: 14px;
+}
+
+.reward-stat {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 18px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.reward-stat strong {
+  font-size: 2rem;
+}
+
+.reward-message {
+  min-height: 86px;
+  padding: 18px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.reward-message--success {
+  background: rgba(127, 216, 180, 0.18);
+  color: var(--mint-deep);
+}
+
+.reward-message--retry {
+  background: rgba(255, 139, 123, 0.12);
+  color: #b14c39;
+}
+
+.celebration-burst {
+  position: relative;
+  min-height: 88px;
+  padding: 22px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.62);
+  overflow: hidden;
+}
+
+.celebration-burst span {
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  color: var(--mint-deep);
+}
+
+.burst-dot {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.burst-dot--one {
+  top: 24px;
+  right: 22px;
+  background: var(--gold);
+}
+
+.burst-dot--two {
+  bottom: 20px;
+  right: 58px;
+  background: var(--sky);
+}
+
+.burst-dot--three {
+  top: 34px;
+  right: 88px;
+  background: var(--coral);
+}
+
+.celebration-burst--active .burst-dot {
+  animation: burstPop 800ms ease-out forwards;
+}
+
+.parent-metrics {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.parent-detail-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@keyframes bloomFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes burstPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.8);
+  }
+}
+
 @media (max-width: 760px) {
   .app-frame {
     padding-inline: 14px;
@@ -424,13 +920,30 @@ p {
   .feature-grid,
   .story-steps,
   .cta-panel,
-  .hero-statbar {
+  .hero-statbar,
+  .dashboard-grid,
+  .game-layout,
+  .dashboard-lower,
+  .parent-metrics,
+  .parent-detail-grid,
+  .answer-grid,
+  .pattern-track,
+  .stat-grid {
     grid-template-columns: 1fr;
   }
 
   .hero-panel,
   .cta-panel {
     padding: 24px;
+  }
+
+  .garden-island-card__header,
+  .game-card__header,
+  .game-footer,
+  .game-actions,
+  .parent-summary {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .island-orb {

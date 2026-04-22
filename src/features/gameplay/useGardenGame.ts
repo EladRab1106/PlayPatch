@@ -38,12 +38,12 @@ export function useGardenGame() {
     if (feedback === 'correct') {
       if (roundCorrectAnswers >= 3) {
         completeCurrentLevel();
+        return;
       }
 
       setSelectedOptionId(null);
       setFeedback('idle');
       clearRoundFeedback();
-      return;
     }
 
     if (feedback === 'incorrect') {

@@ -74,11 +74,13 @@ export function ProgressProvider({ children }: PropsWithChildren) {
         ...nextCreatureUnlock(completedLevels.length),
       ];
       const nextLevel = Math.min(current.currentLevel + 1, gameLevels.length - 1);
+      const nextHabitat = gameLevels[nextLevel].habitat;
 
       return {
         ...current,
         completedLevels,
         currentLevel: nextLevel,
+        currentHabitat: nextHabitat,
         seedsEarned: current.seedsEarned + 8,
         unlockedGardenItems,
         unlockedCreatures,
